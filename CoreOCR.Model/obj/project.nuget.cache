@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "FsMrQigADOYf0Fe2BdjIGq0TZgNB0HalP41LY4JnO0xc7x9N7eh13VHCPQLkQ+TOA1QDD9ZnQtPlf+/ZGiSdCw==",
+  "success": true,
+  "projectFilePath": "D:\\Libra\\OCR\\CoreOCR.Model\\CoreOCR.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kai\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Kai\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Kai\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Kai\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

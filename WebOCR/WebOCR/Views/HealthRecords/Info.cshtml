@@ -1,0 +1,294 @@
+﻿@{
+    ViewData["Title"] = "Expect Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebOCR.Models.FileForm;
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="btn-group float-right m-t-b-10">
+                <ol class="breadcrumb hide-phone p-0 m-0">
+                    <li class="breadcrumb-item"><a href="#">Libra</a></li>
+                    <li class="breadcrumb-item"><a href="#">Health Records</a></li>
+                    <li class="breadcrumb-item active">Expect Information</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end page title end breadcrumb -->
+<form id="upload" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-10">
+                <div class="card-body p-t-5">
+
+                    <div class="row">
+                        <div class="col-sm-4 file-upload">
+                            <label for="example-text-input" class="col-form-label">SELECT FILE NEED TO EXPECT INFORMATION: </label>
+                            <div class="file-select">
+                                <div class="file-select-button" id="fileName">Choose File</div>
+                                <div class="file-select-name" id="noFile">No file chosen...</div>
+                                <input type="file" asp-for="File" id="inputFile" accept="image/*" onchange="showPreview(event);">
+                            </div>
+                        </div>
+                        <div class="col-sm-2 text-center  m-t-36">
+                            <button name="send" type="submit" id="submit" runat="server" class="btn btn-primary btn-lg btn-block">
+                                <i class="fa fa-mouse-pointer"></i>  Submit
+                            </button>
+                        </div>
+                        <div class="col-sm-2 text-center   m-t-36">
+                            <a id="Return" asp-controller="HealthRecords" asp-action="Index" class="btn btn-primary btn-lg btn-block">
+                                <i class="fa fa-rotate-left"></i>  Return
+                            </a>
+                        </div>
+                        <div class="col-sm-2 text-center  m-t-36">
+                            <button id="SaveResult" class="btn btn-primary btn-lg btn-block">
+                                <i class="fa fa-save"></i>  Save
+                            </button>
+                        </div>
+                        <div class="col-sm-2 text-center  m-t-36">
+                            <button id="ClearResult" class="btn btn-primary btn-lg btn-block">
+                                <i class="fa fa-eraser"></i>  Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mini-stat">
+                <div class="p-l-r-20 bg-primary text-white">
+                    <div class="mini-stat-icon">
+                        <i class="mdi mdi-image float-right mb-0"></i>
+                    </div>
+                    <h6 class="text-uppercase mb-0">Image Preview</h6>
+                </div>
+                <div class="card-body p-1r">
+                    <div class="text-muted">
+                        <img id="image_input" class="img-fluid center mh-350">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mini-stat">
+                <div class="p-l-r-20 bg-primary text-white">
+                    <div class="mini-stat-icon">
+                        <i class="mdi mdi-file-check float-right mb-0"></i>
+                    </div>
+                    <h6 class="text-uppercase mb-0">OCR Result</h6>
+                </div>
+                <div class="btn-group btn-group-toggle">
+                    <a href="#" class="btn btn-outline-primary tab">HTML</a>
+                    <a href="#" class="btn btn-outline-primary tab">Json</a>
+                </div>
+                <div class="card-body p-1r">
+                    <div class="text-muted">
+                        <div id="HTMLVal">
+                            <pre id="textocr" class="tab-content show-content mh-299"></pre>
+                        </div>
+                        <div id="JsonVal">
+                            <pre id="jsonocr" class="tab-content mh-299"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+
+    $('#inputFile').bind('change', function() {
+        var filename = $("#inputFile").val();
+        if (/^\s*$/.test(filename)) {
+            $(".file-upload").removeClass('active');
+            $("#noFile").text("No file chosen...");
+        }
+        else {
+            $(".file-upload").addClass('active');
+            $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+        }
+    });
+
+    const tabs = document.querySelectorAll(".tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    for (let i = 0; i < tabs.length; i++) {
+        const tab = tabs[i];
+        tab.addEventListener("click", switchClass);
+    }
+
+    function switchClass(e) {
+        e.preventDefault();
+        for (let i = 0; i < tabs.length; i++) {
+            const tab = tabs[i];
+            tab.classList.remove("active");
+            tabContents[i].classList.remove("show-content");
+        }
+
+        const index = Array.prototype.slice.call(e.target.parentElement.children).indexOf(e.target)
+
+        e.target.classList.add("active");
+        tabContents[index].classList.add("show-content");
+    }
+
+    $(document).ready(function() {
+        $('#inputFile').on('change', function(evt) {
+            var input = document.getElementById('inputFile');
+
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    let imgData = e.target.result;
+                    let imgName = input.files[0].name;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+    });
+
+    function getSafe(fn, defaultVal) {
+      try {
+          if (fn() == null) {
+              return ''; 
+          }
+          else {        
+              return fn();
+          }
+      } catch (e) {
+        return defaultVal;
+      }
+    }
+
+    $('#upload').submit(function(e) {
+        e.preventDefault();
+
+        if (document.getElementById('inputFile').files.length == 0) {
+            alertify.error("NO FILES SELECTED!!!");
+        }
+
+        var input = document.getElementById('inputFile');
+        var formData = new FormData(this);
+
+        $('#submit').html("");
+        jQuery('<span>', {
+            id: 'loader',
+            class: 'spinner-border spinner-border-sm',
+            role: 'status'
+        }).appendTo('#submit');
+        $('#submit').append("...Loading");
+        $('#submit').prop("disabled", true);
+        $.ajax({
+            type: 'POST',
+            url: '/HealthRecords/GetInfo',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function(response) {
+                try {
+                    $('#loader').hide();
+                    if (response == "") {
+                        $('#submit').html("Submit");
+                        $('#submit').prop("disabled", false);
+                        $('#result').val("Empty");
+                        return false;
+                    }
+                    $('#submit').html("Submit");
+                    $('#submit').prop("disabled", false);
+                    $('#result').text("");
+                    document.getElementById("jsonocr").innerHTML = JSON.stringify(response, undefined, 1);
+                    let html = "";
+                    html += "<div class='textocr'>";
+                    html += "<p>" + "<strong>Địa chỉ bệnh nhân: </strong>" + (getSafe(() => response.value.dia_chi_benh_nhan, '')) + "</p>"
+                    html += "<p>" + "<strong>Ký hiệu hóa đơn: </strong>" + (getSafe(() => response.value.ky_hieu_hoa_don, '')) + "</p>"
+                    html += "<p>" + "<strong>Loại văn bản: </strong>" + (getSafe(() => response.value.loai_vb, '')) + "</p>"
+                    html += "<p>" + "<strong>Mã số thuế hóa đơn: </strong>" + (getSafe(() => response.value.ma_so_thue_hoa_don, '')) + "</p>"
+                    html += "<p>" + "<strong>Mẫu số hóa đơn: </strong>" + (getSafe(() => response.value.mau_so_hoa_don, '')) + "</p>"
+                    html += "<p>" + "<strong>Số hóa đơn: </strong>" + (getSafe(() => response.value.so_hoa_don, '')) + "</p>"
+                    html += "<p>" + "<strong>Tên bệnh nhân: </strong>" + (getSafe(() => response.value.ten_benh_nhan, '')) + "</p>"
+                    html += "<p>" + "<strong>Tên bệnh viện: </strong>" + (getSafe(() => response.value.ten_benh_vien, '')) + "</p>"
+                    html += "<p>" + "<strong>Tên văn bản: </strong>" + (getSafe(() => response.value.ten_van_ban, '')) + "</p>"
+                    html += "<p>" + "<strong>Tên dịch vụ: </strong>" + (getSafe(() => response.value.ten_dich_vu, '')) + "</p>"
+                    html += "<p>" + "<strong>Thông tin thời gian: </strong>" + (getSafe(() => response.value.thong_tin_thoi_gian.ngay, '')) + (getSafe(() => response.value.thong_tin_thoi_gian.thang, '')) + (getSafe(() => response.value.thong_tin_thoi_gian.nam, '')) + "</p>"
+                    html += "<p>" + "<strong>Tổng tiền bằng số: </strong>" + (getSafe(() => response.value.tong_tien_bang_so, '')) + "</p>"
+                    html += "</div>";
+                    document.getElementById("textocr").innerHTML = html;
+                    alertify.success("DONE!!");
+                } catch (err) {
+                    console.log('Error: ', err.message);
+                    alertify.error("ERROR!!!");
+                }
+            },
+            error: function(e) {
+                $('#submit').html("Submit");
+                $('#submit').prop("disabled", false);
+            }
+        });
+    });
+
+    $('#SaveResult').click(function(e) {
+        e.preventDefault();
+        var input = document.getElementById('inputFile');
+        var size = Math.round(input.files[0].size / 1024);
+        const jsonValue = document.getElementById('jsonocr').innerHTML;
+        const htmlValue = document.getElementById('textocr').innerHTML;
+
+
+        var formData = new FormData();
+        formData.append('file', input.files[0]);
+        formData.append('imageSize', size);
+        formData.append('jsonValue', jsonValue);
+        formData.append('htmlValue', htmlValue);
+
+        if (htmlValue.length == 0 || jsonValue.length == 0) {
+            alertify.error("PLEASE SUBMIT BEFORE SAVE!!");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "/HealthRecords/Save",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function(e) {
+                    alertify.success("SAVE SUCCESSFULLY!");
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    });
+
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("image_input");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    };
+
+    $('#ClearResult').click(function(e) {
+        e.preventDefault();
+        $('#ipImageSize').val("");
+        $('#ipCreateDate').val("");
+        $('#ipImageName').val("");
+        var input = document.getElementById('inputFile');
+        $("#image_input").attr('src', '');
+        $(".file-upload").removeClass('active');
+        $("#noFile").text("No file chosen...");
+        document.getElementById("jsonocr").innerHTML = "";
+        document.getElementById("textocr").innerHTML = "";
+        alertify.success("ALL CLEAR!!");
+    });
+</script>

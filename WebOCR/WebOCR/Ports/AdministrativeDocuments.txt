@@ -1,0 +1,3 @@
+http = https
+domain = ocr-staging.librasoft.vn
+port = 30010

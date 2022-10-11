@@ -1,0 +1,12 @@
+D:\Libra\OCR\CoreOCR.Library\bin\Debug\net5.0\CoreOCR.Library.deps.json
+D:\Libra\OCR\CoreOCR.Library\bin\Debug\net5.0\CoreOCR.Library.dll
+D:\Libra\OCR\CoreOCR.Library\bin\Debug\net5.0\CoreOCR.Library.pdb
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.csproj.AssemblyReference.cache
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.AssemblyInfoInputs.cache
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.AssemblyInfo.cs
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.csproj.CoreCompileInputs.cache
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.dll
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\refint\CoreOCR.Library.dll
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\CoreOCR.Library.pdb
+D:\Libra\OCR\CoreOCR.Library\obj\Debug\net5.0\ref\CoreOCR.Library.dll

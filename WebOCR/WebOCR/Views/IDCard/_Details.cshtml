@@ -1,0 +1,125 @@
+﻿@{
+    IDCardsVM i = ViewData["Info"] as IDCardsVM;
+    ViewData["Title"] = "Details";
+}
+@using CoreOCR.Model.IDCards
+@using Newtonsoft.Json.Linq
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 p-b-10 border-bottom">
+                        <h4 class="header-title float-left">Image Preview</h4>
+                        <div class="btn-group btn-group-toggle float-right">
+                            <button href="#" class="btn btn-outline-primary btn-icon" onclick="zoomin()"><div><i class="fa fa-search-plus"></i></div></button>
+                            <button href="#" class="btn btn-outline-primary btn-icon" onclick="zoomout()"><div><i class="fa fa-search-minus"></i></div></button>
+                            <button href="#" class="btn btn-outline-primary btn-icon" onclick="fullscreen()"><div><i class="fa fa-arrows-alt"></i></div></button>
+@*                            <button href="#" class="btn btn-outline-primary btn-icon" onclick="rotate()"><div><i class="fa fa-repeat"></i></div></button>
+*@                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="card-body">
+                            <div class="text-muted">
+                                <img id="imageValue" src="~/@Url.Content(i.ImagePath)" class="img-fluid center mh-325" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+    <div class="col-xl-6">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 p-b-10 border-bottom">
+                        <h4 class="header-title float-left">Results</h4>
+                        <div class="btn-group btn-group-toggle float-right">
+                            <a href="#" class="btn btn-outline-primary tab">HTML</a>
+                            <a href="#" class="btn btn-outline-primary tab">Json</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="card-body">
+                            <div class="text-muted">
+                                <div id="HTMLVal">
+                                    <pre id="textocr" class="tab-content show-content mh-325">@Html.Raw(i.HTMLValue)</pre>
+                                </div>
+                                <div id="JsonVal ">
+                                    @{
+                                        List<char> charsToRemove = new List<char>() { '[', ']' };
+                                        string str = @i.Value;
+                                        foreach(char c in charsToRemove)
+                                        {
+                                            str = str.Replace(c.ToString(), String.Empty);
+                                        }
+                                        JObject json = JObject.Parse(str);
+                                    }
+                                    <pre id="jsonocr" class="tab-content mh-325">@json</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+<script>
+    const tabs = document.querySelectorAll(".tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    for (let i = 0; i < tabs.length; i++) {
+        const tab = tabs[i];
+        tab.addEventListener("click", switchClass);
+    }
+
+    function switchClass(e) {
+        e.preventDefault();
+        for (let i = 0; i < tabs.length; i++) {
+            const tab = tabs[i];
+            tab.classList.remove("active");
+            tabContents[i].classList.remove("show-content");
+        }
+
+        const index = Array.prototype.slice.call(e.target.parentElement.children).indexOf(e.target)
+
+        e.target.classList.add("active");
+        tabContents[index].classList.add("show-content");
+    }
+
+    function zoomin() {
+        var myImg = document.getElementById("imageValue");
+        var currWidth = myImg.clientWidth;
+        if (currWidth == 1000) return false;
+        else {
+            myImg.style.width = (currWidth + 100) + "px";
+        }
+    }
+
+    function zoomout() {
+        var myImg = document.getElementById("imageValue");
+        var currWidth = myImg.clientWidth;
+        if (currWidth == 100) return false;
+        else {
+            myImg.style.width = (currWidth - 100) + "px";
+        }
+    }
+
+    function fullscreen() {
+        var myImg = document.getElementById("imageValue");
+        myImg.requestFullscreen();
+    }
+
+    let rotation = 0;
+    function rotate() {
+        rotation += 90;
+        if (rotation === 360) {
+            rotation = 0;
+        }
+        document.querySelector("#imageValue").style.transform = `rotate(${rotation}deg)`;
+    }
+</script>

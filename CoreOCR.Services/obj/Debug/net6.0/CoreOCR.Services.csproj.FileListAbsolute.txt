@@ -1,0 +1,12 @@
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\bin\Debug\net6.0\CoreOCR.Services.deps.json
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\bin\Debug\net6.0\CoreOCR.Services.dll
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\bin\Debug\net6.0\ref\CoreOCR.Services.dll
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\bin\Debug\net6.0\CoreOCR.Services.pdb
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.csproj.AssemblyReference.cache
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.AssemblyInfoInputs.cache
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.AssemblyInfo.cs
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.csproj.CoreCompileInputs.cache
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.dll
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\ref\CoreOCR.Services.dll
+D:\LibraSoft\LibraNewOCR\CoreOCR.services\obj\Debug\net6.0\CoreOCR.Services.pdb
