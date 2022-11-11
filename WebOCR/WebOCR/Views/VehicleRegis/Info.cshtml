@@ -7,7 +7,18 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <div class="btn-group float-right m-t-b-10">
+            <div class="btn-group float-left m-t-b-10">
+                <ul class="des hide-phone p-0 m-0">
+                    <li><img src="/assets/icons/file.png" class="center" /><p><b>Step 1:</b> Upload File</p></li>
+                    <li><img src="/assets/icons/right-arrows.png" class="center m-b-10" /></li>
+                    <li><img src="/assets/icons/submit.png" class="center" /><p><b>Step 2:</b> Start OCR</p></li>
+                    <li><img src="/assets/icons/right-arrows.png" class="center m-b-10" /></li>
+                    <li><img src="/assets/icons/result.png" class="center" /><p><b>Step 3:</b> Get Result</p></li>
+                    <li><img src="/assets/icons/right-arrows.png" class="center m-b-10" /></li>
+                    <li><img src="/assets/icons/diskette.png" class="center" /><p><b>Step 4:</b> Save</p></li>
+                </ul>
+            </div>
+            <div class="btn-group float-right m-t-b-10 p-t-15">
                 <ol class="breadcrumb hide-phone p-0 m-0">
                     <li class="breadcrumb-item"><a href="#">Libra</a></li>
                     <li class="breadcrumb-item"><a href="#">Vehicle Regstration</a></li>
@@ -25,34 +36,40 @@
                 <div class="card-body p-t-5">
 
                     <div class="row">
-                        <div class="col-sm-4 file-upload">
-                            <label for="example-text-input" class="col-form-label">SELECT FILE NEED TO EXPECT INFORMATION: </label>
+                        <div class="col-sm-6 file-upload">
+                            <label for="example-text-input" class="col-form-label"><b>1:</b> SELECT FILE NEED TO EXPECT INFORMATION: </label>
                             <div class="file-select">
                                 <div class="file-select-button" id="fileName">Choose File</div>
                                 <div class="file-select-name" id="noFile">No file chosen...</div>
                                 <input type="file" asp-for="File" id="inputFile" accept="image/*" onchange="showPreview(event);">
                             </div>
                         </div>
-                        <div class="col-sm-2 text-center  m-t-36">
-                            <button name="send" type="submit" id="submit" runat="server" class="btn btn-primary btn-lg btn-block">
-                                <i class="fa fa-mouse-pointer"></i>  Submit
-                            </button>
+                        <div class="col-sm-2 text-center m-t-36">
+                            <div class="row">
+                                <label class="col-sm-2 m-t-10"><b>2:</b></label>
+                                <button name="send" type="submit" id="submit" runat="server" class="col-sm-10 btn btn-primary btn-lg btn-block">
+                                    <i class="fa fa-mouse-pointer"></i>  <b>Submit</b>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 text-center m-t-36">
+                            <div class="row">
+                                <label class="col-sm-2 m-t-10"><b>4:</b></label>
+                                <button id="SaveResult" class="col-sm-10 btn btn-primary btn-lg btn-block">
+                                    <i class="fa fa-save"></i>  <b>Save</b>
+                                </button>
+                            </div>
                         </div>
                         <div class="col-sm-2 text-center   m-t-36">
                             <a id="Return" asp-controller="VehicleRegis" asp-action="Index" class="btn btn-primary btn-lg btn-block">
                                 <i class="fa fa-rotate-left"></i>  Return
                             </a>
                         </div>
-                        <div class="col-sm-2 text-center  m-t-36">
-                            <button id="SaveResult" class="btn btn-primary btn-lg btn-block">
-                                <i class="fa fa-save"></i>  Save
-                            </button>
-                        </div>
-                        <div class="col-sm-2 text-center  m-t-36">
+@*                        <div class="col-sm-2 text-center  m-t-36">
                             <button id="ClearResult" class="btn btn-primary btn-lg btn-block">
                                 <i class="fa fa-eraser"></i>  Clear
                             </button>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -85,8 +102,8 @@
                     <h6 class="text-uppercase mb-0">OCR Result</h6>
                 </div>
                 <div class="btn-group btn-group-toggle">
-                    <a href="#" class="btn btn-outline-primary tab">HTML</a>
-                    <a href="#" class="btn btn-outline-primary tab">Json</a>
+                    <a  class="btn btn-outline-primary tab">HTML</a>
+                    <a  class="btn btn-outline-primary tab">Json</a>
                 </div>
                 <div class="card-body p-1r">
                     <div class="text-muted">

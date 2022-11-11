@@ -18,10 +18,13 @@ namespace CoreOCR.API
         public string _IDCAddress = SettingUrl.GetIDCAddress();
         public string _VehicleRegisAddress = SettingUrl.GetVehicleRegisAddress();
         public string _AdministrativeDocumentsAddress = SettingUrl.GetAdministrativeDocumentsAddress();
+        public string _Address = SettingUrl.GetAddress();
         protected BaseApiClient(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
+        #region Ver1
+
         //protected async Task<TResponse> GetAsync<TResponse>(string url)
         //{
         //    //var sessions = _httpContextAccessor
@@ -168,7 +171,6 @@ namespace CoreOCR.API
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_HealthRecordsAddress);
-
             string body;
             HttpResponseMessage response;
             if (file.Length > 0)
@@ -205,7 +207,6 @@ namespace CoreOCR.API
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_IDCAddress);
-
             string body;
             HttpResponseMessage response;
             if (file.Length > 0)
@@ -242,7 +243,6 @@ namespace CoreOCR.API
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_VehicleRegisAddress);
-
             string body;
             HttpResponseMessage response;
             if (file.Length > 0)
@@ -279,7 +279,41 @@ namespace CoreOCR.API
 
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_AdministrativeDocumentsAddress);
+            string body;
+            HttpResponseMessage response;
+            if (file.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    //Get the file steam from the multiform data uploaded from the browser
+                    await file.CopyToAsync(memoryStream);
 
+                    //Build an multipart/form-data request to upload the file to Web API
+                    using var form = new MultipartFormDataContent();
+                    using var fileContent = new ByteArrayContent(memoryStream.ToArray());
+                    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
+                    form.Add(fileContent, "file", file.FileName);
+
+                    response = await client.PostAsync(url, form);
+
+                    body = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return body;
+                    }
+                }
+            }
+            return null;
+        }
+        #endregion
+        protected async Task<string> AddAsync(string url, IFormFile file)
+        {
+
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(_Address);
+            var tokenAPI = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxpYnJhc29mdCJ9.x7yur8vNxXlDXRVGA8RDrP8mTJTznmVBVtl5L4QGrnU";
+            client.DefaultRequestHeaders.Add("X-Access-Token", tokenAPI);
             string body;
             HttpResponseMessage response;
             if (file.Length > 0)

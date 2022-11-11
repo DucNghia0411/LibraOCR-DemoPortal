@@ -18,10 +18,9 @@ namespace CoreOCR.API.HealthRecords
         {
             _httpClientFactory = httpClientFactory;
         }
-
         public async Task<string> ReadHealthRecords(IFormFile file)
         {
-            var body = await AddFileHealthRecordsAsync("extract?service_name=hssk", file);
+            var body = await AddFileHealthRecordsAsync("hssk_img", file);
 
             return body;
         }

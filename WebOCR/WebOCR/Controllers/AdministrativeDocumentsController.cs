@@ -21,6 +21,7 @@ namespace WebOCR.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly OCRContext _oCRContext;
         private readonly IAdministrativeDocumentsAPI _administrativeDocuments;
+
         public AdministrativeDocumentsController(IHttpClientFactory httpClientFactory,
             IHttpContextAccessor httpContextAccessor,
             IConfiguration configuration,
@@ -68,6 +69,7 @@ namespace WebOCR.Controllers
 
             return View(adInfoVM);
         }
+
         [HttpGet]
         public IActionResult Info()
         {
@@ -76,6 +78,7 @@ namespace WebOCR.Controllers
         [HttpPost]
         public async Task<string> GetInfo(IFormFile file)
         {
+
             string dtList = await this._administrativeDocuments.ReadAdministrativeDocuments(file);
             return dtList;
         }
@@ -132,6 +135,7 @@ namespace WebOCR.Controllers
             ViewData["Info"] = info;
             return PartialView("_Details", info);
         }
+        [HttpPost]
         public async Task<IActionResult> Delete(Guid? id)
         {
             var info = await _oCRContext.AdministrativeDocumentsInfo.FindAsync(id);

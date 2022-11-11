@@ -15,10 +15,9 @@ namespace CoreOCR.API.IDCards
         {
             _httpClientFactory = httpClientFactory;
         }
-
         public async Task<string> ReadIDCards(IFormFile file)
         {
-            var body = await AddFileIDCAsync("extract?service_name=cmnd", file);
+            var body = await AddFileIDCAsync("cmnd_img", file);
 
             return body;
         }

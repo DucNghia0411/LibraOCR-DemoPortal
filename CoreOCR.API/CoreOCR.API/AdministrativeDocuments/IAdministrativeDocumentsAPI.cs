@@ -10,6 +10,7 @@ namespace CoreOCR.API.AdministrativeDocuments
     public interface IAdministrativeDocumentsAPI
     {
         public Task<string> ReadAdministrativeDocuments(IFormFile file);
+        public Task<string> ReadAdministrativeDocumentsPDF(IFormFile file);
 
     }
 }

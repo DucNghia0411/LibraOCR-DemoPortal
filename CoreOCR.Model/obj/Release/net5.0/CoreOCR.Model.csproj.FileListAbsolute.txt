@@ -22,3 +22,15 @@ D:\Libra\OCR\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.dll
 D:\Libra\OCR\CoreOCR.Model\obj\Release\net5.0\refint\CoreOCR.Model.dll
 D:\Libra\OCR\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.pdb
 D:\Libra\OCR\CoreOCR.Model\obj\Release\net5.0\ref\CoreOCR.Model.dll
+D:\OCR-Libra\CoreOCR.Model\bin\Release\net5.0\CoreOCR.Model.deps.json
+D:\OCR-Libra\CoreOCR.Model\bin\Release\net5.0\CoreOCR.Model.dll
+D:\OCR-Libra\CoreOCR.Model\bin\Release\net5.0\CoreOCR.Model.pdb
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.csproj.AssemblyReference.cache
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.AssemblyInfoInputs.cache
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.AssemblyInfo.cs
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.csproj.CoreCompileInputs.cache
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.dll
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\refint\CoreOCR.Model.dll
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\CoreOCR.Model.pdb
+D:\OCR-Libra\CoreOCR.Model\obj\Release\net5.0\ref\CoreOCR.Model.dll

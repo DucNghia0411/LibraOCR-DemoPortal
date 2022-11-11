@@ -24,6 +24,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
 
 </head>
 <body class="fixed-left">
@@ -64,18 +67,27 @@
                             </a>
                         </li>
 
-                        <li >
+                        <li>
                             <a asp-controller="IDCard" asp-action="Index" class="waves-effect">
                                 <i class="dripicons-user-id"></i><span>ID Cards</span>
                             </a>
                         </li>
 
-                        <li >
-                            <a asp-controller="AdministrativeDocuments" asp-action="Index" class="waves-effect">
-                                <i class="dripicons-document"></i><span>Documents</span>
-                            </a>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-document"></i> <span> Documents </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a asp-controller="AdministrativeDocuments" asp-action="Index" class="waves-effect">
+                                        <span>Images</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="AdministrativeDocumentsPDF" asp-action="Index" class="waves-effect">
+                                        <span>PDF Files</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-
                     </ul>
                 </div>
                 <div class="clearfix"></div>

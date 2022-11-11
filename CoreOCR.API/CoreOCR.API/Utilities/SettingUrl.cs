@@ -9,6 +9,7 @@ namespace CoreOCR.API.Utilities
 {
     public class SettingUrl
     {
+        #region Ver1
         public static Dictionary<String, String> GetHealthRecordsPort()
         {
             string fileName = "\\Ports/HealthRecords.txt";
@@ -114,5 +115,22 @@ namespace CoreOCR.API.Utilities
         //    ret.Add(path);
         //    return ret;
         //}
+        #endregion
+        public static Dictionary<String, String> GetPort()
+        {
+            string fileName = "\\Ports/API.txt";
+
+            string currentPath = Directory.GetCurrentDirectory() + fileName;
+            Dictionary<String, String> MySettings = File
+                                                .ReadLines(currentPath)
+                                                .ToDictionary(line => line.Substring(0, line.IndexOf('=')).Trim(),
+                                                line => line.Substring(line.IndexOf('=') + 1).Trim());
+            return MySettings;
+        }
+        public static string GetAddress()
+        {
+            Dictionary<String, String> settings = GetPort();
+            return settings["http"] + "://" + settings["domain"] + ":" + settings["port"] + "/";
+        }
     }
 }

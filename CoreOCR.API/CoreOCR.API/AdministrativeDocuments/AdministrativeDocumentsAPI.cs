@@ -17,7 +17,13 @@ namespace CoreOCR.API.AdministrativeDocuments
         }
         public async Task<string> ReadAdministrativeDocuments(IFormFile file)
         {
-            var body = await AddFileAdministrativeDocumentsAsync("extract?service_name=gthc_img", file);
+            var body = await AddFileAdministrativeDocumentsAsync("gthc_img", file);
+
+            return body;
+        }
+        public async Task<string> ReadAdministrativeDocumentsPDF(IFormFile file)
+        {
+            var body = await AddFileAdministrativeDocumentsAsync("gthc_pdf", file);
 
             return body;
         }

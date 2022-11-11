@@ -15,10 +15,9 @@ namespace CoreOCR.API.VehicleRegistration
         {
             _httpClientFactory = httpClientFactory;
         }
-
         public async Task<string> ReadVehicleRegistration(IFormFile file)
         {
-            var body = await AddFileVehicleRegisAsync("extract?service_name=gtcn", file);
+            var body = await AddFileVehicleRegisAsync("gtcn_img", file);
 
             return body;
         }

@@ -15,5 +15,6 @@ namespace WebOCR.Datas
         public DbSet<IDCardsVM> IDCardsInfo { get; set; }
         public DbSet<VehicleRegistrationVM> VehicleRegistrationsInfo { get; set; }
         public DbSet<AdministrativeDocumentsVM> AdministrativeDocumentsInfo { get; set; }
+        public DbSet<AdministrativeDocumentsPDFVM> AdministrativeDocumentsPDFInfo { get; set; }
     }
 }

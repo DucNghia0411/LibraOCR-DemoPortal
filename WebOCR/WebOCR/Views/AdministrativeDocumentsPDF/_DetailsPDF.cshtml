@@ -1,0 +1,114 @@
+﻿@{
+    AdministrativeDocumentsPDFVM i = ViewData["Info"] as AdministrativeDocumentsPDFVM;
+    ViewData["Title"] = "DetailsPDF";
+}
+@using CoreOCR.Model.AdministrativeDocuments
+@using Newtonsoft.Json.Linq
+
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 p-b-10 border-bottom">
+                        <h4 class="header-title float-left">File Preview</h4>
+                        <div class="btn-group btn-group-toggle float-right">
+                            <button href="#" class="btn btn-outline-primary btn-icon" onclick="fullscreen()"><div><i class="fa fa-arrows-alt"></i></div></button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="card-body">
+                            <div class="text-muted">
+                                <embed id="imageValue" src="~/@Url.Content(i.PDFPath)" class="center" width="100%" height="600px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+    <div class="col-xl-6">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 p-b-10 border-bottom">
+                        <h4 class="header-title float-left">Results</h4>
+                        <div class="btn-group btn-group-toggle float-right">
+                            <a class="btn btn-outline-primary tab">HTML</a>
+                            <a class="btn btn-outline-primary tab">Json</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="card-body">
+                            <div class="text-muted">
+                                <div id="HTMLVal">
+                                    <pre id="textocr" class="tab-content show-content mh-325">@Html.Raw(i.HTMLValue)</pre>
+                                </div>
+                                <div id="JsonVal">
+                                    <pre id="jsonocr" class="tab-content mh-325">@i.Value</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+<script>
+    const tabs = document.querySelectorAll(".tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    for (let i = 0; i < tabs.length; i++) {
+        const tab = tabs[i];
+        tab.addEventListener("click", switchClass);
+    }
+
+    function switchClass(e) {
+        e.preventDefault();
+        for (let i = 0; i < tabs.length; i++) {
+            const tab = tabs[i];
+            tab.classList.remove("active");
+            tabContents[i].classList.remove("show-content");
+        }
+
+        const index = Array.prototype.slice.call(e.target.parentElement.children).indexOf(e.target)
+
+        e.target.classList.add("active");
+        tabContents[index].classList.add("show-content");
+    }
+
+    function zoomin() {
+        var myImg = document.getElementById("imageValue");
+        var currWidth = myImg.clientWidth;
+        if (currWidth == 1000) return false;
+        else {
+            myImg.style.width = (currWidth + 100) + "px";
+        }
+    }
+
+    function zoomout() {
+        var myImg = document.getElementById("imageValue");
+        var currWidth = myImg.clientWidth;
+        if (currWidth == 100) return false;
+        else {
+            myImg.style.width = (currWidth - 100) + "px";
+        }
+    }
+
+    function fullscreen() {
+        var myImg = document.getElementById("imageValue");
+        myImg.requestFullscreen();
+    }
+
+    let rotation = 0;
+    function rotate() {
+        rotation += 90;
+        if (rotation === 360) {
+            rotation = 0;
+        }
+        document.querySelector("#imageValue").style.transform = `rotate(${rotation}deg)`;
+    }
+</script>

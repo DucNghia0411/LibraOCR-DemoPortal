@@ -11,6 +11,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.IO;
+using WebOCR.Common;
 
 namespace WebOCR.Controllers
 {
@@ -27,11 +28,11 @@ namespace WebOCR.Controllers
             OCRContext oCRContext,
             IHealthRecordsAPI healthRecords)
         {
-            _configuration = configuration;
-            _httpContextAccessor = httpContextAccessor;
-            _httpClientFactory = httpClientFactory;
-            _oCRContext = oCRContext;
-            _healthRecords = healthRecords;
+            this._configuration = configuration;
+            this._httpContextAccessor = httpContextAccessor;
+            this._httpClientFactory = httpClientFactory;
+            this._oCRContext = oCRContext;
+            this._healthRecords = healthRecords;
         }
         public async Task<IActionResult> Index(int? SearchNo, string SearchId, string SearchCreateDate, string SearchName)
         {

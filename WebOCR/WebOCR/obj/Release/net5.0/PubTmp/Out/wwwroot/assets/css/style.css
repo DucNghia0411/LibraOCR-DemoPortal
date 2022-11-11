@@ -3331,4 +3331,25 @@ File: Responsive
 .mh-450{
     max-height:450px
 }
+
+.medium-height{
+    max-height: 40%;
+}
+.max-width{
+    max-width: 100%;
+}
+.center-ico {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.des{
+    list-style:none;
+}
+.des li{
+    display:inline-block;
+}
+.p-t-15{
+    padding-top:15px;
+}
 /*# sourceMappingURL=style.css.map */
