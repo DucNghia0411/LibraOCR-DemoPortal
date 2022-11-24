@@ -76,6 +76,22 @@ namespace CoreOCR.API.Utilities
 
             return MySettings;
         }
+        public static Dictionary<String, String> GetTransferPaperPort()
+        {
+            string fileName = "\\Ports/TransferPaper.txt";
+
+            string currentPath = Directory.GetCurrentDirectory() + fileName;
+            //DirectoryInfo dir = new DirectoryInfo(currentPath);
+            //List<DirectoryInfo> listDir = Split(dir);
+            //string settingFilePath = listDir[listDir.Count - 5].ToString() + fileName;
+
+            Dictionary<String, String> MySettings = File
+                                                .ReadLines(currentPath)
+                                                .ToDictionary(line => line.Substring(0, line.IndexOf('=')).Trim(),
+                                                line => line.Substring(line.IndexOf('=') + 1).Trim());
+
+            return MySettings;
+        }
         public static string GetHealthRecordsAddress()
         {
             Dictionary<String, String> settings = GetHealthRecordsPort();
@@ -95,6 +111,11 @@ namespace CoreOCR.API.Utilities
         public static string GetAdministrativeDocumentsAddress()
         {
             Dictionary<String, String> settings = GetAdministrativeDocumentsPort();
+            return settings["http"] + "://" + settings["domain"] + ":" + settings["port"] + "/";
+        }
+        public static string GetTransferPaperAddress()
+        {
+            Dictionary<String, String> settings = GetTransferPaperPort();
             return settings["http"] + "://" + settings["domain"] + ":" + settings["port"] + "/";
         }
         //public static string GetDomain()

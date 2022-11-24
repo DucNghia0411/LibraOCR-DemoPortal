@@ -1,6 +1,7 @@
 using CoreOCR.API.AdministrativeDocuments;
 using CoreOCR.API.HealthRecords;
 using CoreOCR.API.IDCards;
+using CoreOCR.API.TransferPaper;
 using CoreOCR.API.VehicleRegistration;
 using CoreOCR.Data;
 using CoreOCR.Services;
@@ -46,6 +47,7 @@ namespace WebOCR
             services.AddTransient<IIDCardsAPI, IDCardsAPI>();
             services.AddTransient<IVehicleRegistrationsAPI, VehicleRegistrationsAPI>();
             services.AddTransient<IAdministrativeDocumentsAPI, AdministrativeDocumentsAPI>();
+            services.AddTransient<ITransferPaperAPI, TransferPaperAPI>();
 
             // For Entity Framework  
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));

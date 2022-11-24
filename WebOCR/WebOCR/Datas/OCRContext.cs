@@ -1,6 +1,7 @@
 ﻿using CoreOCR.Model.AdministrativeDocuments;
 using CoreOCR.Model.HealthRecords;
 using CoreOCR.Model.IDCards;
+using CoreOCR.Model.TransferPaper;
 using CoreOCR.Model.VehicleRegistrations;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,5 +17,7 @@ namespace WebOCR.Datas
         public DbSet<VehicleRegistrationVM> VehicleRegistrationsInfo { get; set; }
         public DbSet<AdministrativeDocumentsVM> AdministrativeDocumentsInfo { get; set; }
         public DbSet<AdministrativeDocumentsPDFVM> AdministrativeDocumentsPDFInfo { get; set; }
+        public DbSet<TransferPaperPDFVM> TransferPaperPDFInfo { get; set; }
+
     }
 }

@@ -1838,6 +1838,7 @@ D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\dist
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\wwwroot\pdf\administrativedocuments\vbhc (1).pdf
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\wwwroot\pdf\administrativedocuments\vbhc.pdf
+D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\wwwroot\pdf\tranferpaper\KQ Chuyen truong Bui Huy Khanh 617-4.10.22.pdf
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\appsettings.json
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\PubTmp\Out\WebOCR.dll

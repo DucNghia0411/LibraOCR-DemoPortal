@@ -357,3 +357,6 @@ D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\ref\WebOCR.dll
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\Razor\Views\AdministrativeDocumentsPDF\InfoPDF.cshtml.g.cs
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\Razor\Views\AdministrativeDocumentsPDF\_DetailsPDF.cshtml.g.cs
 D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\Razor\Views\AdministrativeDocumentsPDF\Index.cshtml.g.cs
+D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\Razor\Views\TransferPaperPDF\Index.cshtml.g.cs
+D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\Razor\Views\TransferPaperPDF\InfoPDF.cshtml.g.cs
+D:\OCR-Libra\WebOCR\WebOCR\obj\Release\net5.0\Razor\Views\TransferPaperPDF\_DetailsPDF.cshtml.g.cs

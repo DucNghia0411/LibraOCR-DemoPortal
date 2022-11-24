@@ -46,7 +46,7 @@
                         <div class="card-body">
                             <div class="text-muted">
                                 <div id="HTMLVal">
-                                    <pre id="textocr" class="tab-content show-content max-height">@Html.Raw(i.HTMLValue)</pre>
+                                    <pre id="textocr" class="tab-content  max-height">@Html.Raw(i.HTMLValue)</pre>
                                 </div>
                                 <div id="JsonVal">
                                     @{
@@ -58,7 +58,7 @@
                                         }
                                         JObject json = JObject.Parse(str);
                                     }
-                                    <pre id="jsonocr" class="tab-content max-height">@i.Value</pre>
+                                    <pre id="jsonocr" class="tab-content show-content max-height">@i.Value</pre>
                                 </div>
                             </div>
                         </div>
